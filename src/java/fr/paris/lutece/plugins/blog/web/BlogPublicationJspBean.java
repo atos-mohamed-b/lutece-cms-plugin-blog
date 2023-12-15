@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fr.paris.lutece.plugins.blog.business.portlet.BlogListPortlet;
 import fr.paris.lutece.plugins.blog.business.portlet.BlogListPortletHome;
@@ -389,7 +389,7 @@ public class BlogPublicationJspBean extends BlogJspBean
         Collection<ReferenceItem> listPortlets = new ArrayList<>( );
 
         // Check role PERMISSION_MANAGE for DocumentListPortlet
-        if ( RBACService.isAuthorized( PortletType.RESOURCE_TYPE, BlogListPortlet.RESOURCE_ID, PortletResourceIdService.PERMISSION_MANAGE, getUser( ) ) )
+        if ( RBACService.isAuthorized( PortletType.RESOURCE_TYPE, BlogListPortlet.RESOURCE_ID, PortletResourceIdService.PERMISSION_MANAGE, (User) getUser( ) ) )
         {
             listPortlets.addAll( BlogListPortletHome.findByFilter( nDocumentId, pOrder, pFilter ) );
         }
@@ -469,7 +469,7 @@ public class BlogPublicationJspBean extends BlogJspBean
         Collection<ReferenceItem> listPortlets = new ArrayList<>( );
 
         // Check role PERMISSION_MANAGE for DocumentPortlet
-        if ( RBACService.isAuthorized( PortletType.RESOURCE_TYPE, BlogPortlet.RESOURCE_ID, PortletResourceIdService.PERMISSION_MANAGE, getUser( ) ) )
+        if ( RBACService.isAuthorized( PortletType.RESOURCE_TYPE, BlogPortlet.RESOURCE_ID, PortletResourceIdService.PERMISSION_MANAGE, (User) getUser( ) ) )
         {
             listPortlets.addAll( BlogPortletHome.findByFilter( nDocumentId, pOrder, pFilter ) );
         }

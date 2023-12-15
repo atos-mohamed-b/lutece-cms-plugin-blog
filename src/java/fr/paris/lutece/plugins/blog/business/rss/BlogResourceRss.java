@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import fr.paris.lutece.plugins.blog.business.Blog;
 import fr.paris.lutece.plugins.blog.business.DocContent;
@@ -74,7 +74,6 @@ import fr.paris.lutece.util.html.HtmlTemplate;
 public class BlogResourceRss extends ResourceRss
 {
     // templates
-    private static final String TEMPLATE_PUSH_RSS_XML_BLOG = "admin/plugins/blog/rss/rss_xml_blogs.html";
     private static final String TEMPLATE_RSS_BLOG_ITEM_TITLE = "admin/plugins/blog/rss/rss_blogs_item_title.html";
     private static final String TEMPLATE_TASK_CREATE_CONFIG = "admin/plugins/blog/rss/rss_create_config.html";
     private static final String TEMPLATE_TASK_MODIFY_CONFIG = "admin/plugins/blog/rss/rss_modify_config.html";

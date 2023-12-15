@@ -1,0 +1,34 @@
+<section class="p-2">
+<h2 class="my-3">${portlet_name!}</h2>
+<#if blog_list_published??>
+<#list blog_list_published as doc>
+<div class="card portlet mb-2">
+	<div class="card-body">
+	<div class="media">
+		<div class="media-left">
+			<a href="jsp/site/Portal.jsp?page=blog&id=${doc.id}&portlet_id=${portlet_id}">
+			<#if doc.docContent?? && doc.docContent?size!=0>
+				<#list doc.docContent as docContent >
+					<#if docContent.contentType.idContentType=1>
+						<img  src="servlet/plugins/blogs/file?id_file=${docContent.id}"  title="${doc.contentLabel}" alt="${doc.contentLabel}" style="width:80px" class="media-object img-fluid">
+						<#break>
+					</#if>
+				</#list>
+			</#if>
+    		</a>
+		</div>
+		<div class="media-body pl-3">
+			<h4 class="media-heading">${doc.contentLabel}</h4>
+			${doc.description!}
+			<p class="lead">
+				<a href="<#if doc.url?trim != ''>${doc.url}<#else>jsp/site/Portal.jsp?page=blog&id=${doc.id}&portlet_id=${portlet_id}</#if>" alt="" title="">
+					#i18n{blog.xpage.blog.readMoreLabel}
+				</a>
+			</p>
+		</div>
+	</div>
+	</div>
+</div>
+</#list>
+</#if>
+</section>

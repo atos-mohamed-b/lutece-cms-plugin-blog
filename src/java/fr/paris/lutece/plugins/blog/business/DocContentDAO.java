@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -227,8 +227,6 @@ public final class DocContentDAO implements IDocContentDAO
     {
         try ( DAOUtil daoUtil = new DAOUtil( SQL_QUERY_UPDATE, plugin ) )
         {
-
-            // daoUtil.setInt( 1, docContent.getId( ));
             daoUtil.setInt( 1, docContent.getContentType( ).getIdContentType( ) );
 
             daoUtil.setString( 2, docContent.getTextValue( ) );

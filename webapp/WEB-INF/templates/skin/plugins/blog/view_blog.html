@@ -1,1 +1,24 @@
-${blog.htmlContent}
+<section class="card portlet pt-5 mt-5">
+    <div class="row px-5">
+        <article class="col p-3 mt-4">
+            <header class="px-5">        
+                <h2 class="h1">${blog.contentLabel}</h2>
+				<#if blog.docContent?? && blog.docContent?size!=0>
+                <#list blog.docContent?sort_by('priority') as docContent >
+                <#if docContent.contentType.idContentType=1>
+                    <figure class="float-left p-3"> 
+                        <img src="servlet/plugins/blogs/file?id_file=${docContent.id!}" title="${blog.contentLabel}" alt="${blog.contentLabel}" style="width:150px" class="img-fluid">
+                    </figure>
+					<#break>
+					</#if>
+					</#list>
+				</#if>
+                <h3>${blog.description!}</h3>
+            </header>
+            <div class="py-4 px-5">
+            ${blog.htmlContent}
+            </div>
+        </article>
+        <div class=" overflow-hidden"></div>
+    </div>
+</section>
