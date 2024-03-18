@@ -42,6 +42,7 @@
 package fr.paris.lutece.plugins.blog.utils;
 
 import java.text.Normalizer;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -53,6 +54,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 
+import fr.paris.lutece.plugins.blog.business.Blog;
 import fr.paris.lutece.plugins.blog.business.BlogSearchFilter;
 import fr.paris.lutece.plugins.blog.service.BlogPlugin;
 import fr.paris.lutece.portal.business.user.AdminUser;
@@ -61,6 +63,7 @@ import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.util.date.DateUtil;
 import fr.paris.lutece.util.html.HtmlTemplate;
+import fr.paris.lutece.util.sort.AttributeComparator;
 
 /**
  * Utility class for announce plugin
@@ -229,6 +232,26 @@ public final class BlogUtils
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_INSERT_BLOG_LINK, null, model );
 
         return template.getHtml( );
+    }
+
+    /**
+     * Sort the given List of blogs on a specific attribute (title, date...) and a specific order
+     * 
+     * @param blogListToSort
+     *            The blogs List to sort
+     * @param sortOnAttribute
+     *            The blog attribute used for the sorting
+     * @param strIsAscendingSort
+     *            If true, sort on ascending order, if null or false the sort is made on descending order
+     */
+    public static void sortBlogList( List<Blog> blogListToSort, String sortOnAttribute, String strIsAscendingSort )
+    {
+        if ( StringUtils.isNotBlank( sortOnAttribute ) )
+        {
+            boolean bIsAscSort = Boolean.parseBoolean( strIsAscendingSort );
+
+            Collections.sort( blogListToSort, new AttributeComparator( sortOnAttribute, bIsAscSort ) );
+        }
     }
 
     /**

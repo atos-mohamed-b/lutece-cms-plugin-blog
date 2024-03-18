@@ -38,6 +38,15 @@
             <feature-group>CONTENT</feature-group>
             <feature-icon-url/>
 		</admin-feature>
+		<admin-feature>
+            <feature-id>BLOG_ARCHIVES_MANAGEMENT</feature-id>
+            <feature-title>blog.adminFeature.ManageBlogArchives.name</feature-title>
+            <feature-description>blog.adminFeature.ManageBlogArchives.description</feature-description>
+            <feature-level>2</feature-level>
+            <feature-url>jsp/admin/plugins/blog/ManageBlogArchives.jsp</feature-url>
+            <feature-group>CONTENT</feature-group>
+            <feature-icon-url/>
+		</admin-feature>
     </admin-features>    
 
     <!-- Specific plugin CSS stylesheet -->

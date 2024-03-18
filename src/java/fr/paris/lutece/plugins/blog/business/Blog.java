@@ -63,6 +63,7 @@ public class Blog extends ReferenceItem implements Serializable, IExtendableReso
     public static final String PERMISSION_MODIFY = "MODIFY";
     public static final String PERMISSION_DELETE = "DELETE";
     public static final String PERMISSION_PUBLISH = "PUBLISH";
+    public static final String PERMISSION_ARCHIVE = "ARCHIVE";
 
     // Variables declarations
     private int _nId;

@@ -1,0 +1,34 @@
+<@pageContainer>
+	<@pageColumn>
+		<@pageHeader title='#i18n{blog.manage_blog_archives.title}' toolsClass='d-flex' />
+		<@box class='p-0'>
+			<@boxBody>
+				<#if archived_blogs_list?has_content>
+					<@table headBody=true>
+						<@tr>
+							<@th>#i18n{blog.manage_blogs.columnContentLabel} <@sort jsp_url="jsp/admin/plugins/blog/ManageBlogArchives.jsp" attribute="contentLabel" /></@th>
+							<@th>#i18n{blog.manage_blog_archives.archivedDate} <@sort jsp_url="jsp/admin/plugins/blog/ManageBlogArchives.jsp" attribute="creationDate" /></@th>
+							<@th>#i18n{portal.util.labelActions}</@th>
+						</@tr>
+						<@tableHeadBodySeparator />
+						<#list archived_blogs_list as archived_blog>
+							<@tr>
+								<@td>${archived_blog.contentLabel!}</@td>
+								<@td>${archived_blog.creationDate!}</@td>
+								<@td>
+									<@aButton href='jsp/site/Portal.jsp?page=blog&amp;id=${archived_blog.id}'
+										title='#i18n{portal.site.admin_page.labelShowPage}' buttonIcon='eye'
+										hideTitle=['all'] target='_blank' color='default ms-1' size=''
+										class='btn-preview' />
+								</@td>
+							</@tr>
+						</#list>
+					</@table>
+				<#else>
+					<@empty title='#i18n{blog.manage_blog_archives.noArchive}' subtitle=' ' />
+				</#if>
+			</@boxBody>
+		</@box>
+		<@paginationAdmin paginator=paginator combo=1 />
+	</@pageColumn>
+</@pageContainer>
